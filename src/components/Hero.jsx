@@ -6,24 +6,28 @@ import { useGSAP } from '@gsap/react'
 
 const Hero = () => {
   let [videoSrc,setVideoSrc] = useState(window.innerWidth < 760 ? smallHeroVideo : heroVideo)
+
   const handleVideoSrc = () => { 
-     if(window.innerWidth < 760){
-       setVideoSrc(smallHeroVideo)
-     }else
-       setVideoSrc(heroVideo);
-   }
+    if(window.innerWidth < 760){
+      setVideoSrc(smallHeroVideo)
+    }else{
+      setVideoSrc(heroVideo);
+    }
+  }
+
   useEffect(()=>{
     window.addEventListener('resize',handleVideoSrc)
-
+    
     return () => {
       window.removeEventListener('resize',handleVideoSrc)
     }
   },[]);
 
   useGSAP(()=> {
-    gsap.to("#hero",{opacity:1,delay:2})
-    gsap.to("#ctn",{opacity:1,y:0 , delay : 2})
+    gsap.to("#hero",{opacity:1,delay:2.5})
+    gsap.to("#ctn",{opacity:1,y: -50 , delay : 2.5})
   },[])
+
   return (
     <section className='flex-center flex-col nav-height '>
       <p id='hero' className='hero-title'>iPhone 15 pro</p>
@@ -34,8 +38,8 @@ const Hero = () => {
         </video>
       </div>
       <div id='ctn' className='flex-center flex-col translate-y-12 opacity-0'>
-        <button className='btn'>Buy</button>
-        <p>From $199/month or $999</p>
+        <a className='btn'>Buy</a>
+        <p className='text-lg'>From $199/month or $999</p>
       </div>
     </section>
   )

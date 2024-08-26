@@ -7,7 +7,7 @@ import { searchImg } from "../../utils";
 const Navbar = () => {
   return (
     <header className="w-full py-5 px-5 max-sm:px-10 screen-max-width">
-      <nav className="flex justify-between items-baseline ">
+      <nav className="flex justify-around items-baseline ">
         <img src={appleImg} alt="Apple" width={18} height={180} />
         <div
           className="flex 
